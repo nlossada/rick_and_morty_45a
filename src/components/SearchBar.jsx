@@ -1,10 +1,18 @@
+import { useState } from "react";
+
 export default function SearchBar({ onSearch }) {
-   // props recibe una prop de {funcion dentro}, hago destructuring o uso props.onSearch
+
+   const [id, setId] = useState("");
+
+   function handleChange(event) {
+      setId(event.target.value)
+   }
+
    return (
       <div>
 
-         <input type='search' />
-         <button onClick={onSearch}> Agregar </button>
+         <input type='search' onChange={handleChange} value={id} />
+         <button onClick={() => { onSearch(id) }}> Agregar </button>
 
       </div>
    );
