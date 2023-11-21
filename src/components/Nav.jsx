@@ -21,6 +21,12 @@ function Nav({ onSearch, onRandomSearch, logout }) {
                     style={({ isActive }) => isActive ? { color: "gray" } : null}
                 >About</NavLink>
             </button>
+            <button>
+                <NavLink
+                    to="/favorites"
+                    style={({ isActive }) => isActive ? { color: "gray" } : null}
+                >Favorites</NavLink>
+            </button>
             <SearchBar onSearch={onSearch} onRandomSearch={onRandomSearch}> </SearchBar>
 
             <button onClick={handleClickLogout}>Log out</button>

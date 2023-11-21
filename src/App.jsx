@@ -5,6 +5,7 @@ import About from './components/About.jsx';
 import Detail from './components/Detail.jsx';
 import NotFound from './components/NotFound.jsx'
 import Form from './components/Form.jsx';
+import Favorites from './components/Favorites.jsx';
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -62,8 +63,9 @@ function App() {
       navigate('/home')
     }
   }
+  // desactivado temporal de la pagina inicial de login!!
   useEffect(() => {
-    !access && navigate('/');
+    !access && navigate('/home'); //para habilitar pantalla inicial de login volver a "/ sin home
   }, [access]);
 
   function logout() {
@@ -94,6 +96,10 @@ function App() {
         <Route
           path='/detail/:id'
           element={<Detail />}
+        />
+        <Route
+          path='/favorites'
+          element={<Favorites onClose={onClose} />}
         />
         <Route
           path='*'
