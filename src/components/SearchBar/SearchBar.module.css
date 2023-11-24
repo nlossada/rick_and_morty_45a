@@ -1,0 +1,12 @@
+.inputSearch {
+    width: 130px;
+    height: 40px;
+    background-color: #91c4a1;
+    border-radius: 10px;
+    border: 5px solid #91c4a1;
+}
+
+
+.inputSearch:hover {
+    box-shadow: 0 10px 15px #d8ebde;
+}

@@ -1,22 +1,34 @@
 import axios from "axios"
+import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from "./action-types"
 
 
-export function addFav(id) {
-    return function (dispatch) {
-        axios(`https://rickandmortyapi.com/api/character/${id}`)
-            .then(response => dispatch({
-                type: "ADD_FAV",
-                payload: response.data
-            }))
+export function addFav(character) { //viene objeto {id:1, name:Rick, status}
+    return {
+        type: ADD_FAV,
+        payload: character
     }
 }
 
-
-// FALTA TERMINAR, REVISAR
 export function removeFav(id) {
     return {
-        type: "REMOVE_FAV",
-        payload: response.data
+        type: REMOVE_FAV,
+        payload: id
     }
 }
+
+// para filtrado siempre hacer copia de todos ANTES de filtrar: allFavorites
+export function filterCards(gender) {
+    return {
+        type: FILTER,
+        payload: gender
+    }
+}
+
+export function orderCards(order) {
+    return {
+        type: ORDER,
+        payload: order
+    }
+}
+
 

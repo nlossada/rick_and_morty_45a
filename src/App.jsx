@@ -1,15 +1,17 @@
 import './App.css';
-import Cards from './components/Cards.jsx';
-import Nav from './components/Nav.jsx';
-import About from './components/About.jsx';
-import Detail from './components/Detail.jsx';
-import NotFound from './components/NotFound.jsx'
-import Form from './components/Form.jsx';
-import Favorites from './components/Favorites.jsx';
+import Cards from './components/Cards/Cards.jsx';
+import Nav from './components/Nav/Nav.jsx';
+import About from './components/About/About.jsx';
+import Detail from './components/Detail/Detail.jsx';
+import NotFound from './components/NotFound/NotFound.jsx'
+import Form from './components/Form/Form.jsx';
+import Favorites from './components/Favorites/Favorites.jsx';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useDebugValue } from 'react';
 import axios from 'axios';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { removeFav } from './redux/actions.js';
 
 function App() {
 
@@ -44,10 +46,12 @@ function App() {
 
   }
 
-  //function click, button close on card
+  const dispatch = useDispatch();
+  //function click, button close on card y favorites, que no lo muestre a la card en Home ni en Favorites
   function onClose(id) {
     const filterCharacters = characters.filter((element) => element.id !== Number(id))
     setCharacters(filterCharacters)
+    dispatch(removeFav(id))  //cuando apreta cruz, también saca de favoritos con estado global y actions
   }
 
   //Random search on nav - search bar

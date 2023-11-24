@@ -1,0 +1,41 @@
+.container {
+    background-color: #455065;
+    width: 200px;
+    height: 400px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 15px 15px black;
+
+    &:hover {
+        box-shadow: 0 20px 20px #91c4a1;
+    }
+}
+
+.container img {
+    width: 130px;
+    box-shadow: 0 15px 15px black;
+    border-radius: 10px;
+
+}
+
+.container button {
+    background-color: #101e2d;
+    margin: 5px;
+
+}
+
+.container div {
+    width: 200px;
+    height: 200px;
+}
+
+.container h3 {
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+.container h4 {
+    margin: 5px;
+    font-weight: 500;
+}

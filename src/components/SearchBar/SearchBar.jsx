@@ -1,4 +1,5 @@
 import { useState } from "react";
+import style from "./SearchBar.module.css"
 
 export default function SearchBar({ onSearch, onRandomSearch }) {
 
@@ -23,7 +24,7 @@ export default function SearchBar({ onSearch, onRandomSearch }) {
    return (
       <div>
 
-         <input type='search' onChange={handleChange} value={id} />
+         <input className={style.inputSearch} type='search' onChange={handleChange} value={id} placeholder="Insert an id here" />
          <button onClick={handleClick}> Add a character </button>
          <button onClick={onRandomSearch}>Add a random Character</button>
 

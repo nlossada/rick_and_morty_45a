@@ -1,6 +1,6 @@
 import { useState } from "react";
-import validation from "../utils/validation";
-
+import validation from "../../utils/validation";
+const banner = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Rick_and_Morty.svg/2560px-Rick_and_Morty.svg.png";
 
 function Form(props) {
 
@@ -23,7 +23,12 @@ function Form(props) {
 
     return (
         <div>
-            <form>
+            <img
+                src={banner}
+                style={{ width: "300px" }}
+                alt=""
+            />
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="email">Email</label>
                 <input
                     type="email"
@@ -47,7 +52,7 @@ function Form(props) {
                 <p>{errors.password ? errors.password : null}</p>
 
                 <div>
-                    <button type="submit" onClick={handleSubmit}>Submit</button>
+                    <button type="submit" disabled={errors.email || errors.password}>Submit</button>
                 </div>
 
 
