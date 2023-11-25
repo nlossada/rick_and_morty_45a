@@ -60,16 +60,16 @@ function App() {
     onSearch(randomId)
   }
 
-  //Login page - matching with var expression on this file
+  //Login page - matching with const on this file
   function login(userData) {
     if (userData.email === EMAIL && userData.password === PASSWORD) {
       setAccess(true)
       navigate('/home')
     }
   }
-  // desactivado temporal de la pagina inicial de login!!
+  // Pedido de login en landing!!
   useEffect(() => {
-    !access && navigate('/home'); //para habilitar pantalla inicial de login volver a "/ sin home
+    !access && navigate('/'); //para deshabilitar pantalla inicial de login poner "/home" p habilitar va sin home "/"
   }, [access]);
 
   function logout() {

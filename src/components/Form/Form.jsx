@@ -1,5 +1,6 @@
 import { useState } from "react";
 import validation from "../../utils/validation";
+import style from "./Form.module.css"
 const banner = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Rick_and_Morty.svg/2560px-Rick_and_Morty.svg.png";
 
 function Form(props) {
@@ -22,14 +23,14 @@ function Form(props) {
     }
 
     return (
-        <div>
+        <div className={style.containerForm}>
             <img
                 src={banner}
                 style={{ width: "300px" }}
                 alt=""
             />
             <form onSubmit={handleSubmit}>
-                <label htmlFor="email">Email</label>
+                <label className={style.label} htmlFor="email">Email</label>
                 <input
                     type="email"
                     name="email"

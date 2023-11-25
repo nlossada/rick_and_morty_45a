@@ -1,0 +1,11 @@
+.containerForm {
+    margin: 150px;
+}
+
+.containerForm form {
+    margin-top: 20px;
+}
+
+.containerForm label {
+    margin: 10px;
+}

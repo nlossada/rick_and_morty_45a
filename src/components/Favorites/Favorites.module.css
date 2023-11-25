@@ -1,0 +1,14 @@
+.select {
+    width: 150px;
+    height: 40px;
+    background-color: #91c4a1;
+    color: #101e2d;
+    font-size: medium;
+    margin: 20px 10px 30px 10px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.select:hover {
+    box-shadow: 0 10px 15px #d8ebde;
+}
