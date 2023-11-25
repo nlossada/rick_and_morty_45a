@@ -22,9 +22,9 @@ export default function SearchBar({ onSearch, onRandomSearch }) {
    }
 
    return (
-      <div>
+      <div className={style.containerDiv}>
 
-         <input className={style.inputSearch} type='search' onChange={handleChange} value={id} placeholder="Insert an id here" />
+         <input className={style.inputSearch} type='search' onChange={handleChange} value={id} placeholder="Id..." />
          <button onClick={handleClick}> Add a character </button>
          <button onClick={onRandomSearch}>Add a random Character</button>
 

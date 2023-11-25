@@ -10,3 +10,29 @@
 .inputSearch:hover {
     box-shadow: 0 10px 15px #d8ebde;
 }
+
+@media (max-width: 1200px) {
+
+    .inputSearch {
+        width: 100px;
+        height: 40px;
+        margin: 5px;
+        padding: 10px;
+
+    }
+}
+
+@media (max-width: 971px) {
+    .containerDiv {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .inputSearch {
+        margin: 5px;
+        padding: 5px;
+        width: 120px;
+        height: 20px;
+
+    }
+}
