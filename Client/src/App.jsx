@@ -31,7 +31,9 @@ function App() {
     if (characterId.length) { // si tiene algo es porque ya existe, debe tener un personaje[0]
       return window.alert(`El personaje ${characterId[0].name} ya existe`);
     }
-    axios(`https://rickandmortyapi.com/api/character/${id}`)
+    //server local:"http://localhost:3001/rickandmorty/character/${id}".
+    // api externa `https://rickandmortyapi.com/api/character/${id}`
+    axios(`http://localhost:3001/rickandmorty/character/${id}`)
       .then(
         ({ data }) => {
           if (data.name) {
