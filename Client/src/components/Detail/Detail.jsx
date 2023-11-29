@@ -7,8 +7,7 @@ function Detail(props) {
 
     const [character, setCharacter] = useState({});
 
-    //server local:"http://localhost:3001/rickandmorty/character/${id}".
-    // api externa `https://rickandmortyapi.com/api/character/${id}`
+    //server local:"http://localhost:3001/rickandmorty/character/${id}". solo anda del id 1 al 5!
     useEffect(() => {
         axios(`http://localhost:3001/rickandmorty/character/${id}`)
             .then(
