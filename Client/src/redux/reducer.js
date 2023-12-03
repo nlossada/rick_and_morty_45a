@@ -12,16 +12,13 @@ export default function reducer(state = initialState, action) {
         case ADD_FAV:
             return {
                 ...state,
-                allCharacters: [...state.allCharacters, payload],
-                myFavorites: [...state.myFavorites, payload]
+                myFavorites: payload,
+                allCharacters: payload
             }
         case REMOVE_FAV:
-            const filterFavs = state.allCharacters.filter(
-                (favorite) => favorite.id !== Number(payload)) // {type:remove:fav payload:"id" string
             return {
                 ...state,
-                allCharacters: filterFavs,
-                myFavorites: filterFavs
+                myFavorites: payload
             }
         case FILTER: //Le hago filter al all, crea copia no lo modifica y renderizo solo myFavorites, en all queda todo
             if (payload === "all") return {

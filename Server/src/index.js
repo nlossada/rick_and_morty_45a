@@ -1,16 +1,26 @@
-const http = require("http");
-const PORT = 3001
-const { getCharById } = require("./controllers/getCharById")
+const express = require("express");
+const server = express();
+const PORT = 3001;
+const { router } = require("./routes/index")
+
+server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    res.header(
+        'Access-Control-Allow-Methods',
+        'GET, POST, OPTIONS, PUT, DELETE'
+    );
+    next();
+});
+
+server.use(express.json())
+server.use("/rickandmorty", router)
 
 
-http
-    .createServer((req, res) => {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        if (req.url.includes("/rickandmorty/character")) {
-            const idReq = req.url.split("/").pop()
-            getCharById(res, idReq)
-        }
-
-    })
-    .listen(PORT, "127.0.0.1",
-        () => (console.log(`Server listening on port ${PORT}`))) // puerto, "localhost" poner numeros para usar el thunder client, cb))
+server.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`)
+})

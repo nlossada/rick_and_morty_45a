@@ -62,13 +62,17 @@ function App() {
     onSearch(randomId)
   }
 
-  //Login page - matching with const on this file
+  //Login page - validacion en el back
   function login(userData) {
-    if (userData.email === EMAIL && userData.password === PASSWORD) {
-      setAccess(true)
-      navigate('/home')
-    }
+    const { email, password } = userData;
+    const URL = 'http://localhost:3001/rickandmorty/login/';
+    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+      const { access } = data;
+      setAccess(data);
+      access && navigate('/home');
+    });
   }
+
   // Pedido de login en landing!!
   useEffect(() => {
     !access && navigate('/home'); //para deshabilitar pantalla inicial de login poner "/home" p habilitar va sin home "/"
