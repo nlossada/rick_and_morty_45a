@@ -13,19 +13,21 @@ const getCharById = (req, res) => {
                 origin: response.data.origin,  //el front busca el origin.name, por lo cual espera obj completo
                 image: response.data.image,
                 status: response.data.status,
-                location: response.data.location
+                location: response.data.location,
             }
-            return character
+            return character.name
+                ? res.status(200).json(character)
+                : res.status(404).send("Not Found")
         })
-        .then((character) => {
-            if (character) {
-                return res.status(200).json(character)
-            } else {
-                res.status(404).send("Not Found")
-            }
-        })
+        // .then((character) => {
+        //     if (character) {
+        //         return res.status(200).json(character)
+        //     } else {
+        //         res.status(404).send("Not Found")
+        //     }
+        // })
         .catch((error) => {
-            res.status(500).json({ message: error })
+            return res.status(500).send(error.message)
         })
 }
 
