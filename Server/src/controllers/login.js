@@ -10,12 +10,6 @@ const loginController = (req, res) => {
     }
     )
     return res.json({ access });
-
-    // habia aplicado filter, sin inicializar access
-    // if (userValid) {
-    //     return res.status(200).json({ access: true })
-    // }
-    // res.status(200).json({ access: false })
 }
 
 module.exports = {

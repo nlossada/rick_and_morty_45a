@@ -25,28 +25,23 @@ function App() {
   const location = useLocation();
 
   //function search bar input
-  function onSearch(id) {
-    //evitar mostrar personajes repetidos
-    const characterId = characters.filter((element) => element.id === Number(id))
-    if (characterId.length) { // si tiene algo es porque ya existe, debe tener un personaje[0]
-      return window.alert(`El personaje ${characterId[0].name} ya existe`);
+  async function onSearch(id) {
+    try {
+      //evitar personajes repetidos
+      const characterId = characters.filter((element) => element.id === Number(id))
+      if (characterId.length) { // si tiene algo es porque ya existe, debe tener un personaje[0]
+        return window.alert(`The character ${characterId[0].name} already exists`);
+      }
+      const { data } = await axios.get(`http://localhost:3001/rickandmorty/character/${id}`)
+      if (data.name) {
+        setCharacters([...characters, data]);
+        navigate('/home')
+      }
+    } catch (error) {
+      window.alert('ID must be between 1 and 826!')
     }
-    //server local:"http://localhost:3001/rickandmorty/character/${id}".
-    // api externa `https://rickandmortyapi.com/api/character/${id}`
-    axios(`http://localhost:3001/rickandmorty/character/${id}`)
-      .then(
-        ({ data }) => {
-          if (data.name) {
-            // setCharacters((oldChars) => [...oldChars, data]);
-            setCharacters([...characters, data]);
-          } else {
-            window.alert('¡No hay personajes con este ID!');
-          }
-        }
-      );
-    navigate('/home')
-
   }
+
 
   const dispatch = useDispatch();
   //function click, button close on card y favorites, que no lo muestre a la card en Home ni en Favorites
@@ -63,25 +58,27 @@ function App() {
   }
 
   //Login page - validacion en el back
-  function login(userData) {
-    const { email, password } = userData;
-    const URL = 'http://localhost:3001/rickandmorty/login/';
-    axios(URL + `?email=${email}&password=${password}`)
-      .then(({ data }) => {
-        const { access } = data;
-        if (access) {
-          setAccess(data);
-          access && navigate('/home');
-        } else {
-          alert("Invalid password or email")
-        }
+  async function login(userData) {
+    try {
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      const { data } = await axios.get(URL + `?email=${email}&password=${password}`)
+      const { access } = data
+      if (access) {
+        setAccess(access);
+        access && navigate('/home');
+      } else {
+        window.alert("Invalid password or email")
+      }
 
-      });
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   // Pedido de login en landing!!
   useEffect(() => {
-    !access && navigate('/home'); //para deshabilitar pantalla inicial de login poner "/home" p habilitar va sin home "/"
+    !access && navigate('/home'); //para deshabilitar "/home" - p habilitar va sin home "/"
   }, [access]);
 
   function logout() {
@@ -129,5 +126,3 @@ function App() {
 
 export default App;
 
-// si exportas por default character, puedo traerlo sin nombre o con el nombre que quiera
-// el export común, con nombre en un objeto, lo tengo que destructuring

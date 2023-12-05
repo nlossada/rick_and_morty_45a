@@ -44,6 +44,7 @@ function Card(props) {
          <button onClick={() => { props.onClose(props.id) }}>X</button>
          <div>
             <h3>{props.name}</h3>
+            <h4>ID: {props.id}</h4>
             <h4>Status: {props.status}</h4>
             <h4>Species: {props.species}</h4>
             <h4>Gender: {props.gender}</h4>
