@@ -21,8 +21,8 @@ export default function SearchBar({ onSearch, onRandomSearch }) {
       <div className={style.containerDiv}>
 
          <input className={style.inputSearch} type='search' onChange={handleChange} value={id} placeholder="Insert an Id" />
-         <button onClick={handleClick}> Add a character </button>
-         <button onClick={onRandomSearch}>Add any Character</button>
+         <button onClick={handleClick}> Add by id </button>
+         <button onClick={onRandomSearch}>Add any character</button>
 
 
       </div>

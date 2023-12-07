@@ -35,7 +35,7 @@ function Nav({ onSearch, onRandomSearch, logout }) {
                 <SearchBar onSearch={onSearch} onRandomSearch={onRandomSearch}> </SearchBar>
             </div>
 
-            <button onClick={handleClickLogout}>Log out ❌</button>
+            <button onClick={handleClickLogout}>Log out ✘</button>
 
 
         </div >

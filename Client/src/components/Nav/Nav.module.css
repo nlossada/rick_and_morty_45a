@@ -41,7 +41,7 @@ button:hover {
     }
 }
 
-@media (max-width: 971px) {
+@media (max-width: 990px) {
     .container {
         height: 110px;
     }

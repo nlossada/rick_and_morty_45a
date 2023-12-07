@@ -1,29 +1,7 @@
-const express = require("express");
-const server = express();
 const PORT = 3001;
-const { router } = require("./routes/index") //puedo obviar index
-const morgan = require("morgan")
+const { server } = require("./app");
 
-
-server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept'
-    );
-    res.header(
-        'Access-Control-Allow-Methods',
-        'GET, POST, OPTIONS, PUT, DELETE'
-    );
-    next();
-});
-server.use(morgan("dev"))
-server.use(express.json()) //si recibo del body, siempre va 
-server.use("/rickandmorty", router)
-//al recibir cualquier url con rickandmorty, ir a buscar las rutas al router que requerimos
-// se desarma url
 
 server.listen(PORT, () => {
-    console.log(`Server listening on ${PORT}`)
+    console.log(`Server listening on http://localhost:${PORT}`)
 })

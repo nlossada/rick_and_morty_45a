@@ -4,7 +4,7 @@ const { loginController } = require("../controllers/login");
 const express = require("express");
 const router = express.Router()
 
-
+// en app está server con ruta rickandmorty y deriva a router de este archivo
 router.get("/character/:id", getCharById);
 
 router.get("/login", loginController);

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useParams } from 'react-router-dom'
 import React, { useState, useEffect } from "react";
+import style from "./Detail.module.css"
 
 function Detail(props) {
     const { id } = useParams(); //traigo solo el params.id con destructuring
@@ -25,17 +26,24 @@ function Detail(props) {
 
 
     return (
-        <div>
-            <h1>Detail</h1>
-            <hr />
+        <div className={style.container}>
 
-            <h3>{character.name}</h3>
-            <h4>Status: {character.status}</h4>
-            <h4>Specie: {character.species}</h4>
-            <h4>Gender: {character.gender}</h4>
-            <h4>Origin: {character.origin?.name}</h4>
-            <h4>Location: {character.location?.name}</h4>
             <img src={character.image} alt={character.name} />
+            <div>
+                <h1>Detail</h1>
+                <hr />
+                <h3>{character.name}</h3>
+                <h4>Id: {character.id} </h4>
+                {
+                    (props.status === "Alive") ? <h4> 🟢 Status: {character.status} </h4> : <h4> 🔴 Status: {character.status}  </h4>
+                }
+                <h4> 𖠋 Specie: {character.species}</h4>
+                <h4> ⚥ Gender: {character.gender}</h4>
+                <h4> ⟟ Origin: {character.origin?.name}</h4>
+                <h4> ⟟ Location: {character.location?.name}</h4>
+            </div>
+
+
         </div>
     )
 }

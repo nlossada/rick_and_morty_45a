@@ -42,13 +42,18 @@ function Card(props) {
 
          }
          <button onClick={() => { props.onClose(props.id) }}>X</button>
-         <div>
+         <div className={style.divTitleText}>
             <h3>{props.name}</h3>
-            <h4>ID: {props.id}</h4>
-            <h4>Status: {props.status}</h4>
-            <h4>Species: {props.species}</h4>
-            <h4>Gender: {props.gender}</h4>
-            <h4>Origin: {props.origin}</h4>
+
+            <div className={style.divText}>
+               {/* <h5>Status: {props.status}</h5> */}
+               {
+                  (props.status === "Alive") ? <h4>🟢 {props.status} </h4> : <h4>🔴 {props.status}  </h4>
+               }
+               <h4> 𖠋  {props.species}  |  ⚥  {props.gender}</h4>
+               <h4> ⟟  {props.origin}</h4>
+            </div>
+
          </div>
 
          <Link to={`/detail/${props.id}`}>
