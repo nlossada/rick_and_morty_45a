@@ -17,9 +17,15 @@ export default function Episodes(props) {
 
     const handleClick = (event) => {
         event.preventDefault();
+        const repetedEpisode = episodes.filter((episode) => episode.id === Number(id))
+        if (repetedEpisode.length) {
+            setId("")
+            return window.alert(`The episode ${repetedEpisode[0].name} already exists`);
+        }
         dispatch(addEpisode(id))
         setId("");
     }
+
 
     return (
         <div>
@@ -33,6 +39,7 @@ export default function Episodes(props) {
                     episodes.map((episode) => (
                         <EpisodeCard
                             key={episode.id}
+                            id={episode.id}
                             episode={episode}
                         />
                     ))

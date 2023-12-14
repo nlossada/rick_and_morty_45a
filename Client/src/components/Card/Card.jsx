@@ -46,7 +46,7 @@ function Card(props) {
             <h3>{props.name}</h3>
 
             <div className={style.divText}>
-               {/* <h5>Status: {props.status}</h5> */}
+
                {
                   (props.status === "Alive") ? <h4>🟢 {props.status} </h4> : <h4>🔴 {props.status}  </h4>
                }

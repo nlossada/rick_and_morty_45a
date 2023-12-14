@@ -80,7 +80,7 @@ function App() {
 
   // Pedido de login en landing!!
   useEffect(() => {
-    !access && navigate('/'); //para deshabilitar "/home" - p habilitar va sin home "/"
+    !access && navigate('/home'); //para deshabilitar "/home" - p habilitar va sin home "/"
   }, [access]);
 
   function logout() {

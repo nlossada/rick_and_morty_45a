@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import style from "./EpisodeCard.module.css"
-import { completedEpisode } from "../../redux/actions";
+import { completedEpisode, deleteEpisode } from "../../redux/actions";
 
 
 export default function EpisodeCard({ episode }) {
@@ -8,7 +8,9 @@ export default function EpisodeCard({ episode }) {
     const dispatch = useDispatch();
     const handleClick = (event) => {
         dispatch(completedEpisode(episode.id))
-
+    }
+    const onClickDeleteEp = (id) => {
+        dispatch(deleteEpisode(episode.id))
     }
     return (
         <div className={style.container}>
@@ -25,6 +27,7 @@ export default function EpisodeCard({ episode }) {
                     : <button className={style.incompleted} onClick={handleClick}> 🔴 Unseen </button>
             }
             {/* <button>★ 1</button> */}
+            <button onClick={onClickDeleteEp}>X</button>
 
         </div>
     )
