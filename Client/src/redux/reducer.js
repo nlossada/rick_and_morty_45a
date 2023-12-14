@@ -1,8 +1,9 @@
-import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from "./action-types"
+import { ADD_EPISODE, ADD_FAV, COMPLETED_EPISODE, FILTER, DELETE_EPISODE, ORDER, REMOVE_FAV } from "./action-types"
 
 const initialState = {
     myFavorites: [],  // es que se renderiza, va agrgeando char [{id:1, name:, status} {id:2, name:}]
-    allCharacters: []  // se hace prop para filter y order, no perder nada
+    allCharacters: [],  // se hace prop para filter y order, no perder nada
+    episodes: [],
 }
 
 export default function reducer(state = initialState, action) {
@@ -43,9 +44,35 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 myFavorites: orderCopyFavs,
             }
+        case ADD_EPISODE:
+            return {
+                ...state,
+                episodes: [...state.episodes, payload],
+            }
+        case DELETE_EPISODE:
+            const filteredEpisodes = state.episodes.filter(
+                episode => episode.id !== Number(payload)
+            )
+            return {
+                ...state,
+                episodes: filteredEpisodes,
+
+            }
+        case COMPLETED_EPISODE:
+            const newEpisodes = state.episodes.map(
+                episode => episode.id === Number(payload) //busco en el array el que quiero marcar como visto
+                    ? { ...episode, completed: !episode.completed } //si lo encuentra, modificale true o false a la prop completed
+                    : episode           //si no encuentra id, devolelo como esta
+            )
+            return {
+                ...state,
+                episodes: newEpisodes, //nuevo obj con la prop completed modificada solo segun id
+            }
+
+
         default:
             return {
-                ...state
+                ...state,
             }
     }
 }

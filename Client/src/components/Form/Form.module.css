@@ -1,11 +1,33 @@
 .containerForm {
-    margin: 150px;
+    margin: 150px 300px;
+    background-color: rgba(65, 33, 95, 0.7);
+    border-radius: 10% 30% 50% 70%;
+    box-shadow: 0 10px 15px #bceaca;
+
 }
 
 .containerForm form {
     margin-top: 20px;
+
 }
 
 .containerForm label {
     margin: 10px;
+}
+
+.containerForm img {
+    width: 200px;
+    height: 220px;
+}
+
+.containerForm button {
+    margin-bottom: 40px;
+}
+
+@media (max-width: 971px) {
+    .containerForm img {
+        display: none;
+    }
+
+
 }

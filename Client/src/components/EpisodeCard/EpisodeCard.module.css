@@ -1,0 +1,27 @@
+.completed {
+    color: #91c4a1;
+}
+
+.incompleted {
+    color: rgb(236, 81, 81);
+}
+
+.container {
+    background-color: rgba(69, 80, 101, 0.8);
+    width: 200px;
+    height: 300px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 15px 15px black;
+
+    &:hover {
+        box-shadow: 0 20px 20px #91c4a1;
+        transform: scale(1.1);
+    }
+}
+
+.divTitleText {
+    height: 160px;
+    margin-bottom: 5px;
+}

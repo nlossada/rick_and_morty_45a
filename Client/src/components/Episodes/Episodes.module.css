@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.searchBar {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.inputSearch {
+    width: 130px;
+    height: 35px;
+    background-color: #91c4a1;
+    border-radius: 10px;
+    border: 5px solid #91c4a1;
+}
+
+
+.inputSearch:hover {
+    box-shadow: 0 10px 15px #d8ebde;
+}

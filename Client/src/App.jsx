@@ -6,12 +6,13 @@ import Detail from './components/Detail/Detail.jsx';
 import NotFound from './components/NotFound/NotFound.jsx'
 import Form from './components/Form/Form.jsx';
 import Favorites from './components/Favorites/Favorites.jsx';
-
+import Episodes from './components/Episodes/Episodes.jsx';
 import { useState, useEffect, useDebugValue } from 'react';
 import axios from 'axios';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { removeFav } from './redux/actions.js';
+
 
 function App() {
 
@@ -23,8 +24,9 @@ function App() {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
 
-  //function search bar input
+  //function search bar input -characters
   async function onSearch(id) {
     try {
       //evitar personajes repetidos
@@ -43,7 +45,7 @@ function App() {
   }
 
 
-  const dispatch = useDispatch();
+
   //function click, button close on card y favorites, que no lo muestre a la card en Home ni en Favorites
   function onClose(id) {
     const filterCharacters = characters.filter((element) => element.id !== Number(id))
@@ -78,7 +80,7 @@ function App() {
 
   // Pedido de login en landing!!
   useEffect(() => {
-    !access && navigate('/home'); //para deshabilitar "/home" - p habilitar va sin home "/"
+    !access && navigate('/'); //para deshabilitar "/home" - p habilitar va sin home "/"
   }, [access]);
 
   function logout() {
@@ -113,6 +115,10 @@ function App() {
         <Route
           path='/favorites'
           element={<Favorites onClose={onClose} />}
+        />
+        <Route
+          path='/episodes'
+          element={<Episodes />}
         />
         <Route
           path='*'

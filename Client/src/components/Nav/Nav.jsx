@@ -29,6 +29,12 @@ function Nav({ onSearch, onRandomSearch, logout }) {
                         style={({ isActive }) => isActive ? { color: "gray" } : null}
                     >Favorites</NavLink>
                 </button>
+                <button>
+                    <NavLink
+                        to="/episodes"
+                        style={({ isActive }) => isActive ? { color: "gray" } : null}
+                    >Episodes</NavLink>
+                </button>
             </div>
 
             <div>

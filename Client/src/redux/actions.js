@@ -1,5 +1,5 @@
 import axios from "axios"
-import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from "./action-types"
+import { ADD_EPISODE, ADD_FAV, COMPLETED_EPISODE, DELETE_EPISODE, FILTER, ORDER, REMOVE_FAV } from "./action-types"
 
 
 export const addFav = (character) => {
@@ -8,7 +8,7 @@ export const addFav = (character) => {
             const endpoint = "http://localhost:3001/rickandmorty/fav";
             const { data } = await axios.post(endpoint, character);
 
-            return dispatch({  //probar, si no eliminar return, puso ariel
+            return dispatch({
                 type: ADD_FAV,
                 payload: data,
             });
@@ -47,6 +47,40 @@ export function orderCards(order) {
     return {
         type: ORDER,
         payload: order
+    }
+}
+
+
+export const addEpisode = (id) => {
+    return async (dispatch) => {
+        try {
+            if (!id) throw new Error("You must insert and id")
+            //falta hacer la parte del back
+            // const endpoint = "http://localhost:3001/rickandmorty/episode/" + id;
+            const endpoint = "https://rickandmortyapi.com/api/episode/" + id;
+            const { data } = await axios.get(endpoint)
+
+            return dispatch({
+                type: ADD_EPISODE,
+                payload: { ...data, completed: false }
+            });
+        } catch (error) {
+            window.alert("Episode ID must be between 1 and 51")
+        }
+    };
+};
+
+export const deleteEpisode = (id) => {
+    return {
+        type: DELETE_EPISODE,
+        payload: id,
+    }
+}
+
+export const completedEpisode = (id) => {
+    return {
+        type: COMPLETED_EPISODE,
+        payload: id,
     }
 }
 
